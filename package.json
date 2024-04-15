@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "miragejs": "^0.1.48"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1"
+  }
+}

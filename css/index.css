@@ -1,0 +1,35 @@
+.viewButton {
+    background-color: teal;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+
+#adminPanel {
+    visibility: visible;
+}
+
+#customerPanel {
+    visibility: hidden;
+}
+
+#newAccountRegion {
+    margin: 5%;
+}
+
+.forms {
+    visibility: hidden;
+}
+
+.accountList li{
+    line-height: 2;
+    font-size: large;
+    background-color: cyan;
+    width: 75%;
+    display: block;
+    align-content: center;
+}
