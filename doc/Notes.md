@@ -19,4 +19,4 @@ allow the ad to be deleted
 Get this hooked into the example backend
 
 #Day Two dev notes
-
+I started in on the HTML stuff. I spent about 2 hours doing research about how to best plug this into what I have already. It's been basically forever since I started from scratch, so this is my anxiety having its way with me.

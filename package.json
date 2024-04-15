@@ -5,6 +5,21 @@
   },
   "dependencies": {
     "bootstrap": "^5.3.3",
-    "jquery": "^3.7.1"
-  }
+    "express": "^4.19.2",
+    "jquery": "^3.7.1",
+    "requirejs": "^2.3.6"
+  },
+  "name": "datalignfrontendproject",
+  "version": "1.0.0",
+  "description": "This is an initial assignment I was given while applying for a job. I'm going to keep it here as some example code, since most of my worked is locked up with my previous employer",
+  "main": "js/index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

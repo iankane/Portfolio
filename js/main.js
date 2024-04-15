@@ -1,4 +1,3 @@
-
 $(document).ready( function() {
     init()
 });
@@ -7,7 +6,11 @@ var accountArray = [];
 var advertContainer = {};
 var currentAccountName;
 
-function init(){
+const advertisementApp = {};
+
+advertisementApp.init = function(){
+    //Initialize Server
+    startMirage()
     //Initialize buttons:
     $("#administratorViewButton").on("click", function(){
         $("#adminPanel").show();
@@ -18,19 +21,19 @@ function init(){
         $("#customerPanel").show();
     });
     $("#addAccountButton").on("click", function(){
-        createTemplateElement("account");
+        advertisementApp.createTemplateElement("account");
     });
     $("#createAdvertisementButton").on("click", function(){
-        createTemplateElement("advertisement");
+        advertisementApp.createTemplateElement("advertisement");
     });
     $("#accountNameInput").on('keypress',function(e) {
         if(e.which == 13) {
-            createTemplateElement("account");
+            advertisementApp.createTemplateElement("account");
         }
     });
 };
 
-function createTemplateElement(type){
+advertisementApp.createTemplateElement = function(type){
     if ("content" in document.createElement("template")) {
         var template, target, props;
         if(type === "account"){
@@ -56,7 +59,7 @@ function createTemplateElement(type){
             template = $('script[data-template="advertAccordian"]').text().split(/\$\{(.+?)\}/g);;
             target = $("#"+currentAccountName+"AdvertisementAccordian");
             var listLength = target.length;
-            var keygen = token();
+            var keygen = advertisementApp.generateToken(10);
             props = {
                 avertName:$("#advertisementNameInput").val(),
                 advertText:$("#advertisementTextInput").val(),
@@ -79,7 +82,7 @@ function createTemplateElement(type){
       attachButtonEvents(type, props);
 };
 
-function attachButtonEvents(type, props){
+advertisementApp.attachButtonEvents = function(type, props){
     if(type === "account"){
         const oldName = props.accountName;
         $("#" + oldName + "EditButton").on("click", function(){
@@ -101,7 +104,7 @@ function attachButtonEvents(type, props){
     }
 };
 
-function editAccountName(oldName, newName, i){
+advertisementApp.editAccountName = function(oldName, newName, i){
 
     //don't make dupe accounts
     for(var i = 0; i < accountArray.length; i++){
@@ -117,17 +120,18 @@ function editAccountName(oldName, newName, i){
     $("button:contains('"+oldName+"')").html(newName);
 }
 
-function render(props) {
+advertisementApp.render = function(props) {
     return function(subObj, i) { 
         //Every other line of our template is one of our escaped out variables.
         return (i % 2) ? props[subObj] : subObj; 
     };
   };
 
-function roll(){
-    return Math.random.toString(36).substring(2);
-}
-
-function token(){
-    return (roll() + roll());
+advertisementApp.generateToken = function(n) {
+    var chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var token = '';
+    for(var i = 0; i < n; i++) {
+        token += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return token;
 };
